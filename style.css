@@ -1,0 +1,56 @@
+/* Estilo general */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center; /* Centra todos los textos */
+    margin: 0;
+    padding: 0;
+    background-color: #d3d3d3; /* Fondo gris */
+}
+
+/* Encabezado */
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px 0;
+}
+
+/* Secciones */
+main section {
+    margin: 20px auto;
+    padding: 10px;
+    max-width: 800px;
+    background-color: white; /* Fondo blanco para destacar el contenido */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Botones para enlaces */
+.thumbnail-container a {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    background-color: #007BFF;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Imágenes dentro de los enlaces */
+.thumbnail-container img {
+    width: 40px; /* Define un ancho más pequeño */
+    height: 40px; /* Mantén la proporción de la imagen */
+    display: block;
+    margin: 0 auto 10px;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+

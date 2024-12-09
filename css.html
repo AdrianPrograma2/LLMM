@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS - Web4U</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #4CAF50;
+        }
+
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border-left: 4px solid #4CAF50;
+            overflow-x: auto;
+            border-radius: 5px;
+        }
+
+        pre code {
+            color: #333;
+        }
+
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .example {
+            margin: 20px 0;
+        }
+
+        .resources {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .resources h3 {
+            margin-top: 0;
+        }
+
+        .resources ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .resources li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>CSS en Web4U</h1>
+        <nav>
+            <a href="web.html" title="Volver a Inicio">Inicio</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Introducción a CSS</h2>
+        <p>CSS describe cómo se deben mostrar los elementos HTML en la pantalla, el papel o en otros medios.</p>
+
+        <section class="example">
+            <h3>Cambiar color y alineación de texto</h3>
+            <pre><code>
+p {
+    color: red;
+    text-align: center;
+}
+            </code></pre>
+            <p>Este código permite cambiar el color de los párrafos y centrarlos en la pantalla.</p>
+        </section>
+
+        <section class="example">
+            <h3>Cambiar el color de fondo</h3>
+            <pre><code>
+body {
+    background-color: lightblue;
+}
+            </code></pre>
+            <p>Este código cambia el color de fondo del cuerpo de la web.</p>
+        </section>
+
+        <section class="example">
+            <h3>Usar una imagen como fondo</h3>
+            <pre><code>
+body {
+    background-image: url("paper.gif");
+}
+            </code></pre>
+            <p>Este código establece una imagen como fondo de la web.</p>
+        </section>
+
+        <section class="example">
+            <h3>Añadir márgenes</h3>
+            <pre><code>
+p {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-right: 150px;
+    margin-left: 80px;
+}
+            </code></pre>
+            <p>Este código añade márgenes alrededor de los elementos para mejorar el diseño.</p>
+        </section>
+
+        <section class="example">
+            <h3>Establecer altura y ancho</h3>
+            <pre><code>
+div {
+    height: 200px;
+    width: 50%;
+    background-color: powderblue;
+}
+            </code></pre>
+            <p>Este código define la altura y el ancho de un elemento con un fondo específico.</p>
+        </section>
+
+        <div class="resources">
+            <h3>Recursos adicionales</h3>
+            <ul>
+                <li><a href="https://www.w3schools.com/css/css_dimension.asp" target="_blank">Dimensiones en CSS</a></li>
+                <li><a href="https://www.w3schools.com/css/css_margin.asp" target="_blank">Márgenes en CSS</a></li>
+                <li><a href="https://www.w3schools.com/css/css_background.asp" target="_blank">Fondos en CSS</a></li>
+                <li><a href="https://www.w3schools.com/css/css_background_image.asp" target="_blank">Imágenes de Fondo en CSS</a></li>
+                <li><a href="https://www.w3schools.com/css/css_selectors.asp" target="_blank">Selectores en CSS</a></li>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>
