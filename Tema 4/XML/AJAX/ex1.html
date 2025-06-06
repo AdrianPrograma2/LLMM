@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>CD Catalog - Div Table</title>
+<style>
+  #divTable {
+    display: table;
+    border-collapse: collapse;
+    width: 80%;
+    margin-top: 20px;
+  }
+  .divTableRow {
+    display: table-row;
+  }
+  .divTableHeading {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+  }
+  .divTableCell, .divTableHead {
+    display: table-cell;
+    border: 1px solid #999999;
+    padding: 8px;
+    text-align: left;
+  }
+</style>
+</head>
+<body>
+
+<h2>CD Catalog Info (Country, Company, Price, Year)</h2>
+<button onclick="loadCDCatalog()">Load Catalog</button>
+
+<div id="divTable"></div>
+
+<script>
+function loadCDCatalog() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    const xmlDoc = this.responseXML;
+    const cds = xmlDoc.getElementsByTagName("CD");
+    
+    let html = `<div class="divTableRow divTableHeading">
+      <div class="divTableHead">Country</div>
+      <div class="divTableHead">Company</div>
+      <div class="divTableHead">Price</div>
+      <div class="divTableHead">Year</div>
+    </div>`;
+    
+    for(let i=0; i < cds.length; i++) {
+      const country = cds[i].getElementsByTagName("COUNTRY")[0].textContent;
+      const company = cds[i].getElementsByTagName("COMPANY")[0].textContent;
+      const price = cds[i].getElementsByTagName("PRICE")[0].textContent;
+      const year = cds[i].getElementsByTagName("YEAR")[0].textContent;
+      
+      html += `<div class="divTableRow">
+        <div class="divTableCell">${country}</div>
+        <div class="divTableCell">${company}</div>
+        <div class="divTableCell">${price} €</div>
+        <div class="divTableCell">${year}</div>
+      </div>`;
+    }
+    
+    document.getElementById("divTable").innerHTML = html;
+  };
+  
+  xhttp.open("GET", "https://www.w3schools.com/js/cd_catalog.xml", true);
+  xhttp.send();
+}
+</script>
+
+</body>
+</html>
