@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio de Interacción</title>
+    <style>
+        #miParrafo {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .botones {
+            margin-bottom: 30px;
+        }
+        #miDiv {
+            padding: 10px;
+            border: 1px solid black;
+            width: fit-content;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Ejercicio de Botones</h1>
+
+    <div class="botones">
+        <p id="miParrafo">Este es un párrafo con estilo modificable.</p>
+        <button onclick="cambiarFuente('Arial')">Arial</button>
+        <button onclick="cambiarFuente('Courier New')">Courier New</button>
+        <button onclick="cambiarFuente('Georgia')">Georgia</button>
+    </div>
+
+    <div class="botones">
+        <img id="miImagen" src="img1.jpg" alt="Imagen dinámica" width="300px"><br>
+        <button onclick="cambiarImagen('img1.jpg')">Imagen 1</button>
+        <button onclick="cambiarImagen('img2.jpg')">Imagen 2</button>
+        <button onclick="cambiarImagen('img3.jpg')">Imagen 3</button>
+    </div>
+
+    <div class="botones">
+        <div id="miDiv">Aquí aparecerán mensajes.</div><br>
+        <button onclick="mostrarMensaje('Hola, bienvenido al sitio!')">Mensaje 1</button>
+        <button onclick="mostrarMensaje('Gracias por visitar nuestra página.')">Mensaje 2</button>
+        <button onclick="mostrarMensaje('¡Vuelve pronto!')">Mensaje 3</button>
+    </div>
+
+    <script>
+        function cambiarFuente(fuente) {
+            document.getElementById("miParrafo").style.fontFamily = fuente;
+        }
+
+        function cambiarImagen(nombreArchivo) {
+            document.getElementById("miImagen").src = nombreArchivo;
+        }
+
+        function mostrarMensaje(mensaje) {
+            document.getElementById("miDiv").innerHTML = mensaje;
+        }
+    </script>
+
+</body>
+</html>
