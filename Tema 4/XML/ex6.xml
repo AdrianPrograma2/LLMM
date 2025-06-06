@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<letter>
+  <sender>
+    <name>John Smith</name>
+    <address>
+      <street>123 Maple Street</street>
+      <city>Springfield</city>
+      <country>USA</country>
+    </address>
+  </sender>
+
+  <receiver>
+    <name>Jane Doe</name>
+    <address>
+      <street>456 Oak Avenue</street>
+      <city>Riverdale</city>
+      <country>USA</country>
+    </address>
+  </receiver>
+
+  <date>2025-06-06</date>
+
+  <body>
+    Dear Jane,
+    <br/>
+    I hope this message finds you well. I just wanted to check in and see how everything is going on your end.
+    Looking forward to catching up soon.
+  </body>
+
+  <signature>
+    Sincerely,<br/>
+    John Smith
+  </signature>
+</letter>
