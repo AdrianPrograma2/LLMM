@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link id="hojaEstilo" rel="stylesheet" href="estilo1.css">
+    <script src="MyJS.js" defer></script>
+</head>
+<body>
+    <h1>Galería de Imágenes</h1>
+
+    <button onclick="cambiarEstilo('estilo1.css')">Estilo 1</button>
+    <button onclick="cambiarEstilo('estilo2.css')">Estilo 2</button>
+
+
+    <div class="galeria">
+        <h2>Coches</h2>
+        <select onchange="cambiaCoche(this.value)">
+            <option value="coche1.jpg">Coche 1</option>
+            <option value="coche2.jpg">Coche 2</option>
+            <option value="coche3.jpg">Coche 3</option>
+            <option value="coche4.jpg">Coche 4</option>
+            <option value="coche5.jpg">Coche 5</option>
+            <option value="coche6.jpg">Coche 6</option>
+        </select>
+        <br><br>
+        <img id="miImagenCoche" src="coche1.jpg" alt="Imagen coche" style="height:300px">
+    </div>
+
+    <div class="galeria">
+        <h2>Spiderman</h2>
+        <select onchange="cambiaSpiderman(this.value)">
+            <option value="spiderman1.jpg">Spiderman 1</option>
+            <option value="spiderman2.jpg">Spiderman 2</option>
+            <option value="spiderman3.jpg">Spiderman 3</option>
+        </select>
+        <br><br>
+        <img id="miImagenSpiderman" src="spiderman1.jpg" alt="Imagen Spiderman" style="height:300px">
+    </div>
+</body>
+</html>
