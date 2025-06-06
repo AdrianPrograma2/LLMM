@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Lectura de RSS con AJAX</title>
+</head>
+<body>
+
+<h2>Últimas noticias de Tecnología - El País</h2>
+<div id="rss-content"></div>
+
+<script>
+const rss_url = "https://api.rss2json.com/v1/api.json?rss_url=https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/tecnologia/portada";
+
+const xhttp = new XMLHttpRequest();
+xhttp.onload = function() {
+  const response = JSON.parse(this.responseText);
+  let html = "";
+
+  if (response.status === "ok") {
+    const items = response.items;
+    for (let i = 0; i < 5; i++) {
+      html += `
+        <h3><a href="${items[i].link}" target="_blank">${items[i].title}</a></h3>
+        <p>${items[i].pubDate}</p>
+        <p>${items[i].description}</p>
+        <hr>
+      `;
+    }
+  } else {
+    html = "<p>No se pudo cargar el RSS</p>";
+  }
+
+  document.getElementById("rss-content").innerHTML = html;
+};
+
+xhttp.open("GET", rss_url, true);
+xhttp.send();
+</script>
+
+</body>
+</html>
