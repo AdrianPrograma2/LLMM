@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mostrar párrafos</title>
+  <style>
+    #resultado {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      background-color: #f3f3f3;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Ejemplo de acceso al DOM</h2>
+
+  <p>Este es el primer párrafo.</p>
+  <p>Este es el segundo párrafo con más texto.</p>
+  <p>Y este es el tercer párrafo, algo más corto.</p>
+
+  <button onclick="mostrarParrafos()">Mostrar contenido</button>
+
+  <div id="resultado"></div>
+
+  <script>
+    function mostrarParrafos() {
+      let parrafos = document.getElementsByTagName("p");
+      let contenido = "";
+
+      for (let i = 0; i < parrafos.length; i++) {
+        contenido += "Párrafo " + (i + 1) + ": " + parrafos[i].innerText + "<br>";
+      }
+
+      document.getElementById("resultado").innerHTML = contenido;
+    }
+  </script>
+
+</body>
+</html>
