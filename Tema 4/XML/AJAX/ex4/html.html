@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JSON Demo</title>
+<style>
+  table {
+    border-collapse: collapse;
+    width: 60%;
+    margin-top: 15px;
+  }
+  th, td {
+    border: 1px solid #333;
+    padding: 6px;
+    text-align: left;
+  }
+  th {
+    background-color: #555;
+    color: white;
+  }
+</style>
+</head>
+<body>
+
+<h2>JSON Demo Example</h2>
+
+<div id="output"></div>
+
+<script>
+const xhttp = new XMLHttpRequest();
+xhttp.onload = function() {
+  const myObj = JSON.parse(this.responseText);
+  let txt = "";
+
+  txt += `<b>Edad:</b> ${myObj.age} <br>`;
+
+  if(myObj.pets.length > 0) {
+    txt += `<b>Tipo de la primera mascota:</b> ${myObj.pets[0].type} <br>`;
+    txt += `<b>Nombre de la primera mascota:</b> ${myObj.pets[0].name} <br>`;
+  }
+
+  txt += `<b>Número de mascotas:</b> ${myObj.pets.length} <br>`;
+
+  txt += `<b>Nombres de todas las mascotas:</b><br>`;
+  for(let i=0; i < myObj.pets.length; i++) {
+    txt += myObj.pets[i].name + "<br>";
+  }
+
+  txt += `<br><b>Datos completos (JSON):</b><br><pre>${JSON.stringify(myObj, null, 2)}</pre>`;
+
+  txt += `<br><b>Datos en tabla:</b><br>`;
+  txt += `<table>
+    <tr><th>Propiedad</th><th>Valor</th></tr>
+    <tr><td>Nombre</td><td>${myObj.name}</td></tr>
+    <tr><td>Edad</td><td>${myObj.age}</td></tr>
+    <tr><td>Numero de mascotas</td><td>${myObj.pets.length}</td></tr>
+  </table>`;
+
+  txt += `<br><b>Lista de mascotas:</b><br>`;
+  txt += `<table>
+    <tr><th>Tipo</th><th>Nombre</th></tr>`;
+  for(let pet of myObj.pets) {
+    txt += `<tr><td>${pet.type}</td><td>${pet.name}</td></tr>`;
+  }
+  txt += `</table>`;
+
+  document.getElementById("output").innerHTML = txt;
+};
+xhttp.open("GET", "https://www.w3schools.com/js/json_demo.txt", true);
+xhttp.send();
+</script>
+
+</body>
+</html>
