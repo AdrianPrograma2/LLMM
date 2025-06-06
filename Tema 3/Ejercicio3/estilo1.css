@@ -1,0 +1,12 @@
+body {
+    background-color: #e0f7fa;
+    font-family: Arial;
+    color: #000;
+}
+
+.galeria {
+    border: 2px solid #0277bd;
+    margin: 10px;
+    padding: 10px;
+    display: inline-block;
+}
