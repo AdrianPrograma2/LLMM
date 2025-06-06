@@ -2,28 +2,31 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Agregar imagen con createElement y appendChild</title>
+  <title>Borrar elementos de una lista</title>
 </head>
 <body>
 
-  <h2>Agregar imagen a un div usando DOM</h2>
+  <h2>Lista con opción para borrar elementos</h2>
 
-  <div id="miDiv" style="border:1px solid #ccc; width:300px; height:200px;">
-  </div>
+  <ul id="miLista">
+    <li>Elemento 1</li>
+    <li>Elemento 2</li>
+    <li>Elemento 3</li>
+    <li>Elemento 4</li>
+  </ul>
 
-  <button onclick="agregarImagen()">Agregar Imagen</button>
+  <button onclick="borrarUltimo()">Borrar último elemento</button>
 
   <script>
-    function agregarImagen() {
-      var imagen = document.createElement("img");
+    function borrarUltimo() {
+      var lista = document.getElementById("miLista");
+      var ultimoElemento = lista.lastElementChild;
 
-      imagen.src = "https://via.placeholder.com/300x200.png?text=Imagen+Ejemplo";
-      imagen.alt = "Ejemplo de imagen";
-      imagen.style.width = "100%";
-
-      var contenedor = document.getElementById("miDiv");
-
-      contenedor.appendChild(imagen);
+      if (ultimoElemento) {
+        lista.removeChild(ultimoElemento);
+      } else {
+        alert("No quedan elementos para borrar.");
+      }
     }
   </script>
 
