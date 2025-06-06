@@ -1,0 +1,9 @@
+{
+  "name": "John",
+  "age": 30,
+  "pets": [
+    {"type":"dog", "name":"Fido"},
+    {"type":"cat", "name":"Whiskers"},
+    {"type":"fish", "name":"Bubbles"}
+  ]
+}
