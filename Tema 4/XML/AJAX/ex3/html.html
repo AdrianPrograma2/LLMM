@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JSON Demo Array</title>
+<style>
+  table {
+    border-collapse: collapse;
+    width: 60%;
+    margin-top: 15px;
+  }
+  th, td {
+    border: 1px solid #333;
+    padding: 6px;
+    text-align: left;
+  }
+  th {
+    background-color: #555;
+    color: white;
+  }
+</style>
+</head>
+<body>
+
+<h2>JSON Demo Array</h2>
+<p id="length"></p>
+<div id="tableDiv"></div>
+
+<script>
+const xhttp = new XMLHttpRequest();
+xhttp.onload = function() {
+  const data = JSON.parse(this.responseText);
+  
+  document.getElementById("length").innerText = "Longitud del array: " + data.length;
+  
+  let html = "<table><tr><th>Nombre</th><th>Edad</th><th>Ciudad</th></tr>";
+  
+  data.forEach(item => {
+    html += `<tr><td>${item.name}</td><td>${item.age}</td><td>${item.city}</td></tr>`;
+  });
+  
+  html += "</table>";
+  
+  document.getElementById("tableDiv").innerHTML = html;
+}
+xhttp.open("GET", "https://www.w3schools.com/js/json_demo_array.txt", true);
+xhttp.send();
+</script>
+
+</body>
+</html>
