@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Agregar imagen con createElement y appendChild</title>
+</head>
+<body>
+
+  <h2>Agregar imagen a un div usando DOM</h2>
+
+  <div id="miDiv" style="border:1px solid #ccc; width:300px; height:200px;">
+  </div>
+
+  <button onclick="agregarImagen()">Agregar Imagen</button>
+
+  <script>
+    function agregarImagen() {
+      var imagen = document.createElement("img");
+
+      imagen.src = "https://via.placeholder.com/300x200.png?text=Imagen+Ejemplo";
+      imagen.alt = "Ejemplo de imagen";
+      imagen.style.width = "100%";
+
+      var contenedor = document.getElementById("miDiv");
+
+      contenedor.appendChild(imagen);
+    }
+  </script>
+
+</body>
+</html>
