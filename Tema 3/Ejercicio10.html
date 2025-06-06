@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Functions Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    section {
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>JavaScript Functions</h1>
+
+<section>
+  <h3>1. Max of two numbers</h3>
+  <input type="number" id="max1">
+  <input type="number" id="max2">
+  <button onclick="showMax()">Get Max</button>
+  <p id="resMax"></p>
+</section>
+
+<section>
+  <h3>2. Max of three numbers</h3>
+  <input type="number" id="max3a">
+  <input type="number" id="max3b">
+  <input type="number" id="max3c">
+  <button onclick="showMaxOfThree()">Get Max of Three</button>
+  <p id="resMax3"></p>
+</section>
+
+<section>
+  <h3>3. Is it a vowel?</h3>
+  <input type="text" id="vowelChar" maxlength="1">
+  <button onclick="checkVowel()">Check</button>
+  <p id="resVowel"></p>
+</section>
+
+<section>
+  <h3>4. Rövarspråket</h3>
+  <input type="text" id="rovarText">
+  <button onclick="translate()">Translate</button>
+  <p id="resRovar"></p>
+</section>
+
+<section>
+  <h3>5. Sum and Multiply of Array</h3>
+  <input type="text" id="arrayInput" placeholder="e.g. 1,2,3,4">
+  <button onclick="sumAndMultiply()">Calculate</button>
+  <p id="resArray"></p>
+</section>
+
+<section>
+  <h3>6. Reverse String</h3>
+  <input type="text" id="reverseInput">
+  <button onclick="reverseText()">Reverse</button>
+  <p id="resReverse"></p>
+</section>
+
+<section>
+  <h3>7. Sort Words</h3>
+  <input type="text" id="sortWords" placeholder="word1,word2,word3">
+  <button onclick="sortWordList()">Sort</button>
+  <p id="resSort"></p>
+</section>
+
+<section>
+  <h3>8. Find Longest Word</h3>
+  <input type="text" id="longestInput" placeholder="word1,word2,word3">
+  <button onclick="findLongestWord()">Find</button>
+  <p id="resLongest"></p>
+</section>
+
+<section>
+  <h3>9. Filter Long Words</h3>
+  <input type="text" id="filterWords" placeholder="word1,word2,word3">
+  <input type="number" id="minLength" placeholder="min length">
+  <button onclick="filterLongWords()">Filter</button>
+  <p id="resFilter"></p>
+</section>
+
+<section>
+  <h3>10. Character Frequency</h3>
+  <input type="text" id="freqText">
+  <button onclick="charFrequency()">Show Frequency</button>
+  <p id="resFreq"></p>
+</section>
+
+<script>
+  function max(a, b) {
+    return (a > b) ? a : b;
+  }
+
+  function showMax() {
+    let a = parseFloat(document.getElementById("max1").value);
+    let b = parseFloat(document.getElementById("max2").value);
+    document.getElementById("resMax").innerHTML = "Max: " + max(a, b);
+  }
+
+  function maxOfThree(a, b, c) {
+    if (a >= b && a >= c) return a;
+    else if (b >= a && b >= c) return b;
+    else return c;
+  }
+
+  function showMaxOfThree() {
+    let a = parseFloat(document.getElementById("max3a").value);
+    let b = parseFloat(document.getElementById("max3b").value);
+    let c = parseFloat(document.getElementById("max3c").value);
+    document.getElementById("resMax3").innerHTML = "Max of three: " + maxOfThree(a, b, c);
+  }
+
+  function isVowel(char) {
+    return 'aeiouAEIOU'.includes(char);
+  }
+
+  function checkVowel() {
+    let char = document.getElementById("vowelChar").value;
+    document.getElementById("resVowel").innerHTML = char ? (isVowel(char) ? "Yes, it's a vowel." : "No, it's not a vowel.") : "Enter a character.";
+  }
+
+  function translate() {
+    let text = document.getElementById("rovarText").value;
+    let result = '';
+    for (let c of text) {
+      if ("aeiouAEIOU ".includes(c) || !/[a-zA-Z]/.test(c)) {
+        result += c;
+      } else {
+        result += c + 'o' + c.toLowerCase();
+      }
+    }
+    document.getElementById("resRovar").innerHTML = result;
+  }
+
+  function sum(arr) {
+    return arr.reduce((a, b) => a + b, 0);
+  }
+
+  function multiply(arr) {
+    return arr.reduce((a, b) => a * b, 1);
+  }
+
+  function sumAndMultiply() {
+    let input = document.getElementById("arrayInput").value;
+    let arr = input.split(',').map(Number);
+    if (arr.some(isNaN)) {
+      document.getElementById("resArray").innerHTML = "Please enter valid numbers.";
+      return;
+    }
+    document.getElementById("resArray").innerHTML = "Sum: " + sum(arr) + " | Multiply: " + multiply(arr);
+  }
+
+  function reverse(str) {
+    return str.split("").reverse().join("");
+  }
+
+  function reverseText() {
+    let str = document.getElementById("reverseInput").value;
+    document.getElementById("resReverse").innerHTML = reverse(str);
+  }
+
+  function sortWordList() {
+    let words = document.getElementById("sortWords").value.split(',');
+    document.getElementById("resSort").innerHTML = words.sort().join(', ');
+  }
+
+  function findLongestWord() {
+    let words = document.getElementById("longestInput").value.split(',');
+    let longest = words.reduce((max, word) => word.length > max.length ? word : max, '');
+    document.getElementById("resLongest").innerHTML = `Longest word length: ${longest.length} (${longest})`;
+  }
+
+  function filterLongWords() {
+    let words = document.getElementById("filterWords").value.split(',');
+    let i = parseInt(document.getElementById("minLength").value);
+    let result = words.filter(word => word.length > i);
+    document.getElementById("resFilter").innerHTML = result.join(', ');
+  }
+
+  function charFrequency() {
+    let str = document.getElementById("freqText").value;
+    let freq = {};
+    for (let char of str) {
+      freq[char] = (freq[char] || 0) + 1;
+    }
+    document.getElementById("resFreq").innerHTML = JSON.stringify(freq, null, 2);
+  }
+</script>
+
+</body>
+</html>
