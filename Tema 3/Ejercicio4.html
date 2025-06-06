@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Variables desde Inputs</title>
+</head>
+<body>
+
+    <h2>Captura de Texto</h2>
+    <label for="nombre">Escribe tu nombre:</label>
+    <input type="text" id="nombre">
+    <button onclick="mostrarNombre()">Mostrar nombre</button>
+    <p id="salidaNombre"></p>
+
+    <h2>Captura de Número</h2>
+    <label for="edad">Escribe tu edad:</label>
+    <input type="number" id="edad">
+    <button onclick="mostrarEdad()">Mostrar edad</button>
+    <p id="salidaEdad"></p>
+
+    <h2>Suma de Números</h2>
+    <input type="number" id="n1" placeholder="Número 1">
+    <input type="number" id="n2" placeholder="Número 2">
+    <button onclick="sumarNumeros()">Sumar</button>
+    <p id="resultadoSuma"></p>
+
+    <script>
+        function mostrarNombre() {
+            var nombre = document.getElementById("nombre").value;
+            document.getElementById("salidaNombre").innerHTML = "Tu nombre es: " + nombre;
+        }
+
+        function mostrarEdad() {
+            var edad = document.getElementById("edad").value;
+            document.getElementById("salidaEdad").innerHTML = "Tu edad es: " + edad;
+        }
+
+        function sumarNumeros() {
+            var num1 = parseFloat(document.getElementById("n1").value);
+            var num2 = parseFloat(document.getElementById("n2").value);
+            var suma = num1 + num2;
+            document.getElementById("resultadoSuma").innerHTML = "La suma es: " + suma;
+        }
+    </script>
+
+</body>
+</html>
