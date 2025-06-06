@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Background Image Slider</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .slider {
+      height: 100vh;
+      width: 100vw;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background-image 1s ease-in-out;
+      padding: 0 40px;
+    }
+
+    button {
+      background-color: rgba(0,0,0,0.5);
+      color: #fff;
+      border: none;
+      padding: 15px 25px;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: rgba(0,0,0,0.7);
+    }
+
+    .caption {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      background-color: rgba(0,0,0,0.4);
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="slider" id="slider">
+    <button onclick="prevImage()">&#8592; Prev</button>
+    <button onclick="nextImage()">Next &#8594;</button>
+    <div class="caption" id="caption">Image 1</div>
+  </div>
+
+  <script>
+    const images = [
+      { url: "img1.jpg", caption: "Image 1" },
+      { url: "img2.jpg", caption: "Image 2" },
+      { url: "img3.jpg", caption: "Image 3" },
+      { url: "img4.jpg", caption: "Image 4" }
+    ];
+
+    let index = 0;
+    const slider = document.getElementById("slider");
+    const caption = document.getElementById("caption");
+
+    function updateSlider() {
+      slider.style.backgroundImage = `url('${images[index].url}')`;
+      caption.textContent = images[index].caption;
+    }
+
+    function nextImage() {
+      index = (index + 1) % images.length;
+      updateSlider();
+    }
+
+    function prevImage() {
+      index = (index - 1 + images.length) % images.length;
+      updateSlider();
+    }
+
+    updateSlider();
+  </script>
+
+</body>
+</html>
