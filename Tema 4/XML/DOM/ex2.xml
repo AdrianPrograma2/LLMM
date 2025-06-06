@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Catálogo de CDs</title>
+</head>
+<body>
+  <h2>Catálogo de CDs</h2>
+  <button onclick="cargarDatos()">Mostrar Catálogo</button>
+  <div id="resultado"></div>
+
+  <script>
+    function cargarDatos() {
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function() {
+        const xmlDoc = this.responseXML;
+        const cds = xmlDoc.getElementsByTagName("CD");
+        const resultado = document.getElementById("resultado");
+        resultado.innerHTML = "";
+
+        for (let i = 0; i < cds.length; i++) {
+          const titulo = cds[i].getElementsByTagName("TITLE")[0].textContent;
+          const artista = cds[i].getElementsByTagName("ARTIST")[0].textContent;
+          const precio = cds[i].getElementsByTagName("PRICE")[0].textContent;
+          const compania = cds[i].getElementsByTagName("COMPANY")[0].textContent;
+          const anio = cds[i].getElementsByTagName("YEAR")[0].textContent;
+
+          // Crear elementos del DOM
+          const contenedorCD = document.createElement("div");
+          const texto = document.createElement("p");
+          texto.innerHTML = `<strong>${titulo}</strong> - ${artista} - ${precio}€<br>
+                             <em>Compañía:</em> ${compania} - <em>Año:</em> ${anio}`;
+          
+          contenedorCD.appendChild(texto);
+          resultado.appendChild(contenedorCD);
+        }
+      };
+
+      xhttp.open("GET", "https://www.w3schools.com/js/cd_catalog.xml", true);
+      xhttp.send();
+    }
+  </script>
+</body>
+</html>
