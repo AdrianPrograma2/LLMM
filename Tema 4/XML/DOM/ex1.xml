@@ -1,0 +1,39 @@
+1-
+document.getElementsByTagName("title")[0].childNodes[0].nodeValue;
+2-
+document.getElementsByTagName("year")[0].childNodes[0].nodeValue;
+3-
+document.getElementsByTagName("price")[1].childNodes[0].nodeValue;
+4-
+document.getElementsByTagName("author")[0].childNodes[0].nodeValue;
+5-
+document.getElementsByTagName("book")[2].getElementsByTagName('author')[0].childNodes[0].nodeValue;
+6-
+document.getElementsByTagName("book")[2].getElementsByTagName('author')[1].childNodes[0].nodeValue;
+7-
+document.getElementsByTagName("book")[0].attributes[0].nodeName;
+8-
+document.getElementsByTagName("book")[0].attributes[0].nodeValue;
+9-
+document.getElementsByTagName("book")[2].getElementsByTagName('author').length;
+10-
+let l = document.getElementsByTagName("book")[2].getElementsByTagName('author').length;
+let a = document.getElementsByTagName("book")[2].getElementsByTagName('author');
+
+for(let i = 0; i < l; i++) {
+    console.log(a[i].childNodes[0].nodeValue);
+}
+11-
+document.getElementsByTagName("book")[3].attributes.length;
+12-
+let l = document.getElementsByTagName("book")[3].attributes.length;
+let a = document.getElementsByTagName("book")[3].attributes;
+
+for(let i = 0; i < l; i++) {
+    console.log(a[i].nodeValue);
+}
+
+
+
+
+
