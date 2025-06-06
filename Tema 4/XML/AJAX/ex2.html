@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>Datos Meteorológicos - Huelva</title>
+<style>
+  body { font-family: Arial, sans-serif; }
+  table { border-collapse: collapse; width: 80%; margin-top: 20px; }
+  th, td { border: 1px solid #666; padding: 8px; text-align: center; }
+  th { background-color: #4CAF50; color: white; }
+</style>
+</head>
+<body>
+
+<h1>Información meteorológica de Huelva</h1>
+
+<button onclick="cargarDatos()">Cargar datos</button>
+
+<div id="info"></div>
+
+<script>
+function cargarDatos() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    const xmlDoc = this.responseXML;
+    if(!xmlDoc) {
+      document.getElementById('info').innerHTML = "Error al cargar o parsear XML";
+      return;
+    }
+    
+    const tempMax = xmlDoc.getElementsByTagName('temperatura_maxima')[0]?.textContent || 'N/D';
+    const tempMin = xmlDoc.getElementsByTagName('temperatura_minima')[0]?.textContent || 'N/D';
+
+    const estados = xmlDoc.getElementsByTagName('estado_cielo');
+
+    const viento = xmlDoc.getElementsByTagName('viento')[0];
+    let dirViento = viento ? viento.getElementsByTagName('direccion')[0].textContent : 'N/D';
+    let velViento = viento ? viento.getElementsByTagName('velocidad')[0].textContent : 'N/D';
+
+    const humedad = xmlDoc.getElementsByTagName('humedad_relativa')[0]?.textContent || 'N/D';
+
+    let html = `<h2>Temperaturas</h2>
+      <p>Máxima: ${tempMax} °C</p>
+      <p>Mínima: ${tempMin} °C</p>
+      
+      <h2>Estado del cielo por tramo horario</h2>
+      <table><tr><th>Hora</th><th>Estado</th></tr>`;
+    for(let i = 0; i < estados.length; i++) {
+      const hora = estados[i].getAttribute('hora') || 'N/D';
+      const estado = estados[i].textContent || 'N/D';
+      html += `<tr><td>${hora}</td><td>${estado}</td></tr>`;
+    }
+    html += `</table>`;
+
+    html += `<h2>Viento</h2>
+      <p>Dirección: ${dirViento}</p>
+      <p>Velocidad: ${velViento} km/h</p>`;
+
+    html += `<h2>Humedad relativa</h2>
+      <p>${humedad} %</p>`;
+
+    document.getElementById('info').innerHTML = html;
+  };
+
+  xhttp.open("GET", "localidad_21041.xml", true);
+  xhttp.send();
+}
+</script>
+
+</body>
+</html>
