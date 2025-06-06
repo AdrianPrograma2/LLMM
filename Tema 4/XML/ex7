@@ -1,0 +1,6 @@
+Asi se ve un comentario
+<!-- This is a comment -->
+Asi se ve un tag
+<person name="Alice" age="30" />
+Estructuras logicas
+<book>Content</book>
